@@ -1,12 +1,9 @@
-# Your Name Here
+# Andrew Deba
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
+# 11/21/2024
+# Lab 10
+# Lab Section: 18
 # Sources, people worked with, help given to: 
-# your
-# comments
-# here
 
 #import modules you will need 
 
@@ -16,6 +13,26 @@ from pathlib import Path
 def get_hash(to_hash):
     """You can use """
     return sha256(to_hash.encode('utf-8')).hexdigest().upper()
+
+#Stored Hash
+try:
+    stored_hash = get_hash("""You can use """)
+except:
+    print("PLACEHOLDER")
+
+#Compare Against Passwords
+try:
+    path = Path('rockyou.txt')
+    content = (path.read_text()).splitlines()
+    for line in content:
+        #print(line)
+        hash_integral = get_hash(line)
+        print(f"{hash_integral} \n")
+        if hash_integral == stored_hash:
+            print(f"Success on the line: {line}")
+except FileNotFoundError:
+    print("IDK")
+
 
 
 
